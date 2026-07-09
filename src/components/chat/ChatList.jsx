@@ -18,7 +18,7 @@ function timeAgo(iso) {
  * supports search filtering, shows unread badges and AI-handled indicator.
  */
 export default function ChatList() {
-  const { conversations, activeChatId, setActiveChatId, markAsRead, searchQuery, setSearchQuery } = useChat();
+  const { conversations, activeChatId, setActiveChatId, markAsRead, searchQuery, setSearchQuery, setMobileView } = useChat();
 
   const filtered = conversations.filter((c) =>
     c.customer.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -53,6 +53,7 @@ export default function ChatList() {
               onClick={() => {
                 setActiveChatId(c.id);
                 markAsRead(c.id);
+                setMobileView("chat"); // on mobile, switch to the chat window
               }}
               className={`flex w-full items-start gap-3 border-b border-slate-50 dark:border-white/5 px-4 py-3 text-left transition-colors
                 ${activeChatId === c.id ? "bg-brand-green/5" : "hover:bg-slate-50 dark:hover:bg-white/5"}`}

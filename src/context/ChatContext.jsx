@@ -12,6 +12,8 @@ export function ChatProvider({ children }) {
   const [conversations, setConversations] = useState(dummyConversations);
   const [activeChatId, setActiveChatId] = useState(dummyConversations[0]?.id ?? null);
   const [searchQuery, setSearchQuery] = useState("");
+  // Controls which panel shows on mobile screens: 'list' or 'chat'
+  const [mobileView, setMobileView] = useState("list");
 
   const activeChat = conversations.find((c) => c.id === activeChatId) || null;
 
@@ -29,11 +31,11 @@ export function ChatProvider({ children }) {
       prev.map((c) =>
         c.id === chatId
           ? {
-              ...c,
-              messages: [...c.messages, newMessage],
-              lastMessage: text,
-              lastMessageTime: newMessage.timestamp,
-            }
+            ...c,
+            messages: [...c.messages, newMessage],
+            lastMessage: text,
+            lastMessageTime: newMessage.timestamp,
+          }
           : c
       )
     );
@@ -52,11 +54,11 @@ export function ChatProvider({ children }) {
           prev.map((c) =>
             c.id === chatId
               ? {
-                  ...c,
-                  messages: [...c.messages, aiReply],
-                  lastMessage: aiReply.text,
-                  lastMessageTime: aiReply.timestamp,
-                }
+                ...c,
+                messages: [...c.messages, aiReply],
+                lastMessage: aiReply.text,
+                lastMessageTime: aiReply.timestamp,
+              }
               : c
           )
         );
@@ -81,6 +83,8 @@ export function ChatProvider({ children }) {
         markAsRead,
         searchQuery,
         setSearchQuery,
+        mobileView,
+        setMobileView,
       }}
     >
       {children}

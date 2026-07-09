@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FiPaperclip, FiSend, FiSmile, FiPhone, FiVideo, FiUserCheck, FiMessageSquare } from "react-icons/fi";
+import { FiPaperclip, FiSend, FiSmile, FiPhone, FiVideo, FiUserCheck, FiMessageSquare, FiArrowLeft } from "react-icons/fi";
 import { useChat } from "../../context/ChatContext.jsx";
 import { useToast } from "../../context/ToastContext.jsx";
 import MessageBubble from "./MessageBubble.jsx";
@@ -11,7 +11,7 @@ import EmptyState from "../common/EmptyState.jsx";
  * message thread (WhatsApp-style wallpaper), AI suggestion chips, composer.
  */
 export default function ChatWindow() {
-  const { activeChat, sendMessage } = useChat();
+  const { activeChat, sendMessage, setMobileView } = useChat();
   const { showToast } = useToast();
   const [draft, setDraft] = useState("");
   const bottomRef = useRef(null);
@@ -47,6 +47,14 @@ export default function ChatWindow() {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/10 bg-white dark:bg-brand-panel px-4 py-3">
         <div className="flex items-center gap-3">
+          {/* Back button — only visible on mobile, returns to the chat list */}
+          <button
+            onClick={() => setMobileView("list")}
+            className="btn-ghost h-9 w-9 !p-0 md:hidden"
+            aria-label="Back to chat list"
+          >
+            <FiArrowLeft size={18} />
+          </button>
           <img src={activeChat.customer.avatar} alt={activeChat.customer.name} className="h-10 w-10 rounded-full object-cover" />
           <div>
             <p className="text-sm font-semibold text-slate-800 dark:text-white">{activeChat.customer.name}</p>

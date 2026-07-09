@@ -75,7 +75,7 @@ export default function Navbar({ onMenuClick }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.97 }}
                 transition={{ duration: 0.15 }}
-                className="glass-panel absolute right-0 mt-2 w-80 rounded-2xl p-2"
+                className="glass-panel absolute right-0 mt-2 w-80 max-w-[90vw] rounded-2xl p-2"
               >
                 <div className="flex items-center justify-between px-2 py-1.5">
                   <p className="text-sm font-semibold">Notifications</p>
@@ -85,9 +85,8 @@ export default function Navbar({ onMenuClick }) {
                   {dummyNotifications.map((n) => (
                     <div
                       key={n.id}
-                      className={`rounded-xl px-3 py-2.5 text-sm hover:bg-slate-100 dark:hover:bg-white/5 ${
-                        !n.read ? "bg-brand-green/5" : ""
-                      }`}
+                      className={`rounded-xl px-3 py-2.5 text-sm hover:bg-slate-100 dark:hover:bg-white/5 ${!n.read ? "bg-brand-green/5" : ""
+                        }`}
                     >
                       <p className="font-medium text-slate-700 dark:text-slate-100">{n.title}</p>
                       <p className="text-xs text-slate-400">{n.time}</p>
@@ -119,7 +118,7 @@ export default function Navbar({ onMenuClick }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.97 }}
                 transition={{ duration: 0.15 }}
-                className="glass-panel absolute right-0 mt-2 w-56 rounded-2xl p-2"
+                className="glass-panel absolute right-0 mt-2 w-56 max-w-[90vw] rounded-2xl p-2"
               >
                 <div className="px-3 py-2">
                   <p className="text-sm font-semibold text-slate-800 dark:text-white">{user?.name}</p>
