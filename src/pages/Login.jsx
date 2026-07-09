@@ -14,8 +14,8 @@ import Loader from "../components/common/Loader.jsx";
  * via AuthContext.login().
  */
 export default function Login() {
-  const [email, setEmail] = useState("aditi.sharma@chatwave.ai");
-  const [password, setPassword] = useState("••••••••");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { login, isLoading } = useAuth();
   const { showToast } = useToast();
   const navigate = useNavigate();
@@ -107,7 +107,7 @@ export default function Login() {
 
             <div className="flex items-center justify-between text-xs">
               <label className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
-                <input type="checkbox" className="rounded border-slate-300 text-brand-green focus:ring-brand-green" defaultChecked />
+                <input type="checkbox" className="rounded border-slate-300 text-brand-green focus:ring-brand-green" />
                 Remember me
               </label>
               <a href="#" className="font-medium text-brand-dark dark:text-brand-green hover:underline">
