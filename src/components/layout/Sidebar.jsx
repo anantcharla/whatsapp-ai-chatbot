@@ -37,11 +37,9 @@ export default function Sidebar({ isOpen, onClose }) {
         />
       )}
 
-      <motion.aside
-        initial={false}
-        animate={{ x: 0 }}
+      <aside
         className={`fixed z-40 inset-y-0 left-0 w-72 transform bg-brand-dark text-white
-          transition-transform duration-300 lg:static lg:translate-x-0
+          transition-transform duration-300 ease-in-out lg:static lg:translate-x-0
           ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex h-full flex-col">
@@ -103,7 +101,7 @@ export default function Sidebar({ isOpen, onClose }) {
             </div>
           </div>
         </div>
-      </motion.aside>
+      </aside>
     </>
   );
 }
